@@ -1,0 +1,144 @@
+/**
+ * @file CLIParser.cpp
+ * @brief Implementation of CLIParser
+ * @version 1.0.0
+ * @date 2025-10-09
+ */
+
+#include "CLIParser.h"
+#include <iostream>
+#include <cstring>
+
+namespace obfuscator {
+
+CLIParser::CLIParser() : showHelp_(false), showVersion_(false) {
+    setDefaults();
+}
+
+CLIParser::~CLIParser() {
+}
+
+void CLIParser::setDefaults() {
+    config_ = ObfuscationConfig();
+    config_.applyPreset(ObfuscationLevel::MEDIUM);
+}
+
+bool CLIParser::parse(int argc, char* argv[]) {
+    if (argc < 2) {
+        showHelp_ = true;
+        return false;
+    }
+    
+    for (int i = 1; i < argc; ++i) {
+        std::string arg = argv[i];
+        
+        if (arg == "-h" || arg == "--help") {
+            showHelp_ = true;
+            return true;
+        }
+        
+        if (arg == "-v" || arg == "--version") {
+            showVersion_ = true;
+            return true;
+        }
+        
+        if (arg == "-i" || arg == "--input") {
+            if (i + 1 < argc) {
+                inputFile_ = argv[++i];
+            }
+        } else if (arg == "-o" || arg == "--output") {
+            if (i + 1 < argc) {
+                outputFile_ = argv[++i];
+            }
+        } else if (arg == "-l" || arg == "--level") {
+            if (i + 1 < argc) {
+                std::string level = argv[++i];
+                if (level == "low") {
+                    config_.applyPreset(ObfuscationLevel::LOW);
+                } else if (level == "medium") {
+                    config_.applyPreset(ObfuscationLevel::MEDIUM);
+                } else if (level == "high") {
+                    config_.applyPreset(ObfuscationLevel::HIGH);
+                }
+            }
+        } else if (arg == "--cycles") {
+            if (i + 1 < argc) {
+                config_.obfuscationCycles = std::stoi(argv[++i]);
+            }
+        } else if (arg == "--seed") {
+            if (i + 1 < argc) {
+                config_.seed = std::stoul(argv[++i]);
+            }
+        } else if (arg == "--verbose") {
+            config_.verbose = true;
+        } else if (arg == "--no-flatten") {
+            config_.enableControlFlowFlattening = false;
+        } else if (arg == "--no-strings") {
+            config_.enableStringEncryption = false;
+        } else if (arg == "--no-constants") {
+            config_.enableConstantObfuscation = false;
+        } else if (arg == "--enable-virtualization") {
+            config_.enableFunctionVirtualization = true;
+        } else if (arg == "--enable-anti-debug") {
+            config_.enableAntiDebug = true;
+        } else if (arg == "--report") {
+            if (i + 1 < argc) {
+                config_.reportPath = argv[++i];
+            }
+        } else if (arg == "--report-format") {
+            if (i + 1 < argc) {
+                config_.reportFormat = argv[++i];
+            }
+        } else if (inputFile_.empty()) {
+            inputFile_ = arg;
+        } else if (outputFile_.empty()) {
+            outputFile_ = arg;
+        }
+    }
+    
+    if (inputFile_.empty()) {
+        std::cerr << "Error: No input file specified\n";
+        return false;
+    }
+    
+    if (outputFile_.empty()) {
+        outputFile_ = inputFile_ + ".obf";
+    }
+    
+    return config_.validate();
+}
+
+void CLIParser::printHelp() const {
+    std::cout << "LLVM Code Obfuscator v1.0.0\n\n";
+    std::cout << "Usage: llvm-obfuscator [options] <input-file> [output-file]\n\n";
+    std::cout << "Options:\n";
+    std::cout << "  -h, --help                 Show this help message\n";
+    std::cout << "  -v, --version              Show version information\n";
+    std::cout << "  -i, --input <file>         Input source file (C/C++)\n";
+    std::cout << "  -o, --output <file>        Output obfuscated binary\n";
+    std::cout << "  -l, --level <level>        Obfuscation level: low, medium, high (default: medium)\n";
+    std::cout << "  --cycles <n>               Number of obfuscation cycles (default: 3)\n";
+    std::cout << "  --seed <n>                 Random seed for reproducibility\n";
+    std::cout << "  --verbose                  Enable verbose output\n";
+    std::cout << "\nObfuscation Options:\n";
+    std::cout << "  --no-flatten               Disable control flow flattening\n";
+    std::cout << "  --no-strings               Disable string encryption\n";
+    std::cout << "  --no-constants             Disable constant obfuscation\n";
+    std::cout << "  --enable-virtualization    Enable function virtualization\n";
+    std::cout << "  --enable-anti-debug        Enable anti-debugging features\n";
+    std::cout << "\nReport Options:\n";
+    std::cout << "  --report <path>            Report output path (default: obfuscation_report)\n";
+    std::cout << "  --report-format <format>   Report format: json, html, both (default: json)\n";
+    std::cout << "\nExamples:\n";
+    std::cout << "  llvm-obfuscator input.c output\n";
+    std::cout << "  llvm-obfuscator -l high --cycles 5 input.cpp output\n";
+    std::cout << "  llvm-obfuscator --verbose --enable-anti-debug input.c\n\n";
+}
+
+void CLIParser::printVersion() const {
+    std::cout << "LLVM Code Obfuscator v1.0.0\n";
+    std::cout << "Advanced code obfuscation using LLVM infrastructure\n";
+    std::cout << "Copyright (c) 2025\n";
+}
+
+} // namespace obfuscator

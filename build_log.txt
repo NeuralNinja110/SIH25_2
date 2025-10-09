@@ -1,0 +1,74 @@
+[0;32mLLVM Code Obfuscator Build Script[0m
+====================================
+
+[1;33mChecking dependencies...[0m
+[0;32m✓ All dependencies found[0m
+LLVM Version: 18.1.3
+
+[1;33mConfiguring CMake (Release build)...[0m
+-- The CXX compiler identification is GNU 13.3.0
+-- The C compiler identification is GNU 13.3.0
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /usr/bin/c++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: /usr/bin/cc - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Performing Test HAVE_FFI_CALL
+-- Performing Test HAVE_FFI_CALL - Success
+-- Found FFI: /usr/lib/x86_64-linux-gnu/libffi.so  
+-- Looking for histedit.h
+-- Looking for histedit.h - found
+-- Found LibEdit: /usr/include (found version "2.11") 
+-- Performing Test Terminfo_LINKABLE
+-- Performing Test Terminfo_LINKABLE - Success
+-- Found Terminfo: /usr/lib/x86_64-linux-gnu/libtinfo.so  
+-- Found ZLIB: /usr/lib/x86_64-linux-gnu/libz.so (found version "1.3")  
+-- Found zstd: /usr/lib/x86_64-linux-gnu/libzstd.so  
+-- Found LibXml2: /usr/lib/x86_64-linux-gnu/libxml2.so (found version "2.9.14") 
+-- Found CURL: /usr/lib/x86_64-linux-gnu/libcurl.so (found version "8.5.0")  
+-- Found LLVM 18.1.3
+-- Using LLVMConfig.cmake in: /usr/lib/llvm-18/cmake
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Success
+-- Found Threads: TRUE  
+-- Configuring done (6.7s)
+-- Generating done (0.0s)
+-- Build files have been written to: /workspaces/SIH25_2/build
+[0;32m✓ CMake configuration complete[0m
+
+[1;33mBuilding project...[0m
+[  3%] Building CXX object CMakeFiles/obfuscator_lib.dir/src/core/ObfuscationPass.cpp.o
+[  7%] Building CXX object CMakeFiles/obfuscator_lib.dir/src/core/ObfuscationEngine.cpp.o
+[ 11%] Building CXX object CMakeFiles/obfuscator_lib.dir/src/core/PassManager.cpp.o
+/workspaces/SIH25_2/src/core/ObfuscationEngine.cpp: In member function ‘bool obfuscator::ObfuscationEngine::processFile(const std::string&, const std::string&)’:
+/workspaces/SIH25_2/src/core/ObfuscationEngine.cpp:87:38: error: ‘using std::__shared_ptr_access<obfuscator::ReportGenerator, __gnu_cxx::_S_atomic, false, false>::element_type = class obfuscator::ReportGenerator’ {aka ‘class obfuscator::ReportGenerator’} has no member named ‘getMetricsCollector’; did you mean ‘setMetricsCollector’?
+   87 |     auto metrics = reportGenerator_->getMetricsCollector();
+      |                                      ^~~~~~~~~~~~~~~~~~~
+      |                                      setMetricsCollector
+make[2]: *** [CMakeFiles/obfuscator_lib.dir/build.make:76: CMakeFiles/obfuscator_lib.dir/src/core/ObfuscationEngine.cpp.o] Error 1
+make[2]: *** Waiting for unfinished jobs....
+In file included from /workspaces/SIH25_2/src/core/PassManager.cpp:10:
+/workspaces/SIH25_2/include/passes/OpaquePredicates.h:54:40: error: ‘llvm::IRBuilder’ has not been declared
+   54 |     llvm::Value* createOpaquePredicate(llvm::IRBuilder<>& builder);
+      |                                        ^~~~
+/workspaces/SIH25_2/include/passes/OpaquePredicates.h:54:55: error: expected ‘,’ or ‘...’ before ‘<’ token
+   54 |     llvm::Value* createOpaquePredicate(llvm::IRBuilder<>& builder);
+      |                                                       ^
+In file included from /workspaces/SIH25_2/src/core/PassManager.cpp:11:
+/workspaces/SIH25_2/include/passes/InstructionSubstitution.h:24:32: error: ‘llvm::BinaryOperator’ has not been declared
+   24 |     llvm::Value* substituteAdd(llvm::BinaryOperator* inst);
+      |                                ^~~~
+/workspaces/SIH25_2/include/passes/InstructionSubstitution.h:25:32: error: ‘llvm::BinaryOperator’ has not been declared
+   25 |     llvm::Value* substituteSub(llvm::BinaryOperator* inst);
+      |                                ^~~~
+/workspaces/SIH25_2/include/passes/InstructionSubstitution.h:26:32: error: ‘llvm::BinaryOperator’ has not been declared
+   26 |     llvm::Value* substituteXor(llvm::BinaryOperator* inst);
+      |                                ^~~~
+make[2]: *** [CMakeFiles/obfuscator_lib.dir/build.make:104: CMakeFiles/obfuscator_lib.dir/src/core/PassManager.cpp.o] Error 1
+make[1]: *** [CMakeFiles/Makefile2:195: CMakeFiles/obfuscator_lib.dir/all] Error 2
+make: *** [Makefile:146: all] Error 2
