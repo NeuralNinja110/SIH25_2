@@ -75,7 +75,7 @@ bool ObfuscationEngine::processFile(const std::string& inputFile,
     
     // Step 5: Link to final binary
     auto linkStart = std::chrono::high_resolution_clock::now();
-    if (!linkToBinary(objectFile, outputFile)) {
+    if (!linkToBinary(objectFile, outputFile, inputFile)) {
         Logger::getInstance().error("Failed to link binary");
         return false;
     }
@@ -242,7 +242,8 @@ bool ObfuscationEngine::compileToObject(llvm::Module& module,
 }
 
 bool ObfuscationEngine::linkToBinary(const std::string& objectFile, 
-                                     const std::string& binaryFile) {
+                                     const std::string& binaryFile,
+                                     const std::string& inputFile) {
     Logger::getInstance().info("Linking object file to binary");
     
     std::ostringstream cmd;
@@ -252,10 +253,16 @@ bool ObfuscationEngine::linkToBinary(const std::string& objectFile,
     cmd << "\"" << objectFile << "\" ";
     cmd << "/OUT:\"" << binaryFile << "\"";
 #else
-    cmd << "clang ";
+    // Detect C++ files by extension
+    bool isCpp = (inputFile.substr(inputFile.find_last_of(".") + 1) == "cpp");
+    
+    cmd << (isCpp ? "clang++ " : "clang ");
     cmd << "-no-pie ";  // Disable PIE to avoid relocation issues
     cmd << "\"" << objectFile << "\" ";
     cmd << "-lm ";  // Link math library
+    if (isCpp) {
+        cmd << "-lstdc++ ";  // Link C++ standard library for C++ files
+    }
     cmd << "-o \"" << binaryFile << "\"";
 #endif
     

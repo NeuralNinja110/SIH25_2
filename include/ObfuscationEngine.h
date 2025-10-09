@@ -89,9 +89,10 @@ private:
      * @brief Link object file to final binary
      * @param objectFile Path to object file
      * @param binaryFile Path to output binary
+     * @param inputFile Path to original input file (for detecting C++ files)
      * @return true if linking successful
      */
-    bool linkToBinary(const std::string& objectFile, const std::string& binaryFile);
+    bool linkToBinary(const std::string& objectFile, const std::string& binaryFile, const std::string& inputFile);
 
     ObfuscationConfig config_;
     std::unique_ptr<llvm::LLVMContext> context_;
