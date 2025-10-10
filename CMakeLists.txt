@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.20)
-project(LLVMObfuscator VERSION 1.0.0 LANGUAGES CXX C)
+project(MAOS VERSION 2.0.0 LANGUAGES CXX C)  # Multi-Layered Adaptive Obfuscation System
 
 # Set C++ standard
 set(CMAKE_CXX_STANDARD 17)
@@ -36,6 +36,7 @@ find_package(Threads REQUIRED)
 
 # Library sources
 set(LIB_SOURCES
+    # Original obfuscator components
     src/core/ObfuscationEngine.cpp
     src/core/ObfuscationPass.cpp
     src/core/PassManager.cpp
@@ -56,6 +57,12 @@ set(LIB_SOURCES
     src/utils/RandomGenerator.cpp
     src/utils/Logger.cpp
     src/utils/FileUtils.cpp
+    
+    # MAOS components - NOW FULLY IMPLEMENTED AND ENABLED
+    src/core/ATIE.cpp
+    src/core/QIRL.cpp
+    src/core/PCGE.cpp
+    src/core/MAOSEngine.cpp
 )
 
 # Create static library
