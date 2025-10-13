@@ -1,0 +1,70 @@
+{
+  "name": "@phantron/obfuscator",
+  "version": "2.0.0",
+  "description": "Professional code obfuscation CLI with auto-tuning, multi-file support, and comprehensive HTML reporting",
+  "main": "cli/index.js",
+  "bin": {
+    "phantron": "./cli/index.js",
+    "phantron-obfuscate": "./cli/index.js"
+  },
+  "scripts": {
+    "start": "node cli/index.js",
+    "test": "node cli/index.js --help",
+    "build": "make -C build llvm-obfuscator",
+    "demo": "./demo_auto_tune.sh",
+    "docs": "cat docs/AUTO_TUNING.md"
+  },
+  "keywords": [
+    "obfuscation",
+    "security",
+    "code-protection",
+    "auto-tuning",
+    "optimization",
+    "llvm",
+    "phantron",
+    "c",
+    "cpp",
+    "reverse-engineering-protection",
+    "binary-protection"
+  ],
+  "author": {
+    "name": "Phantron Team",
+    "email": "support@phantron.dev"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/NeuralNinja110/SIH25_2.git"
+  },
+  "bugs": {
+    "url": "https://github.com/NeuralNinja110/SIH25_2/issues"
+  },
+  "homepage": "https://github.com/NeuralNinja110/SIH25_2#readme",
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "dependencies": {
+    "boxen": "^5.1.2",
+    "chalk": "^4.1.2",
+    "cli-table3": "^0.6.3",
+    "commander": "^9.4.1",
+    "figures": "^3.2.0",
+    "inquirer": "^8.2.5",
+    "js-yaml": "^4.1.0",
+    "listr": "^0.14.3",
+    "ora": "^5.4.1",
+    "update-notifier": "^6.0.2"
+  },
+  "devDependencies": {
+    "eslint": "^8.30.0"
+  },
+  "preferGlobal": true,
+  "os": [
+    "linux",
+    "darwin"
+  ],
+  "cpu": [
+    "x64",
+    "arm64"
+  ]
+}

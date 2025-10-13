@@ -1,0 +1,156 @@
+# Phantron Obfuscator Balanced Mode Configuration
+# Optimization Goal: Balanced protection with reasonable overhead
+
+mode: balanced
+
+# Targets
+security_threshold: 75%        # Moderate security score
+pass_limit: 150                # Moderate transformation passes
+estimated_re_time: 200h        # Target: 200+ hours to reverse engineer
+
+# Genetic Algorithm Parameters
+genetic_algorithm:
+  enabled: true
+  population_size: 60          # Moderate population
+  generations: 100             # Balanced generations
+  tournament_size: 5           # Moderate tournament
+  mutation_rate: 0.10          # 10% mutation rate
+  crossover_rate: 0.80         # 80% crossover rate
+  convergence_threshold: 0.001 # Moderate convergence
+  elitism_count: 3             # Preserve top 3
+  
+# Fitness Weights (total = 1.0)
+fitness_weights:
+  security: 0.45               # 45% weight on security
+  performance: 0.35            # 35% weight on performance
+  size: 0.20                   # 20% weight on size
+
+# Component Enablement
+components:
+  atie: true                   # Enable ATIE
+  qirl: true                   # Enable QIRL
+  pcge: true                   # Enable PCGE
+  genetic_optimization: true   # Enable GA
+  anti_analysis: true          # Basic anti-analysis
+
+# ATIE Configuration
+atie:
+  ml_model: standard           # Standard ML model
+  pass_selection_strategy: balanced
+  resistance_assessment: standard
+  complexity_threshold: 0.3    # Obfuscate moderately complex functions
+  adaptive_intensity: true
+  tools_to_test:
+    - ida_pro
+    - ghidra
+    - radare2
+
+# QIRL Configuration
+qirl:
+  quantum_inspired: true
+  high_entropy_rng: true
+  entangled_control_flow: true
+  correlation_coefficient: 0.6  # Moderate correlation
+  opaque_predicates: true
+  quantum_encryption: false     # Disabled for performance
+  entropy_target: 5.5           # Moderate entropy
+  opaque_types:
+    - always_true
+    - always_false
+    - quantum_superposition
+
+# PCGE Configuration
+pcge:
+  code_morphing: true
+  morph_types:
+    - instruction_reordering
+    - register_renaming
+    - expression_restructuring
+    - control_flow_variation
+  self_modification: false      # Disabled for compatibility
+  metamorphic_templates: true
+  polymorphic_variants: 3       # 3 variants per function
+  runtime_generation: false     # Disabled for performance
+  variant_selection: random
+
+# Transformation Layers
+layers:
+  structural: true              # Basic control flow obfuscation
+  semantic: true                # Moderate instruction substitution
+  syntactic: true               # Symbol obfuscation
+  quantum_inspired: true
+
+# Advanced Transformations
+advanced_transforms:
+  mixed_boolean_arithmetic: true
+  virtualization: false         # Disabled for performance
+  call_graph_obfuscation: true
+  constant_obfuscation: true
+  string_encryption: true
+  data_flow_obfuscation: true
+  loop_unrolling: false         # Disabled to control size
+  function_splitting: true
+  function_merging: false       # Disabled to control size
+  indirect_calls: true
+
+# Anti-Analysis Features
+anti_analysis:
+  debugger_detection: true
+  vm_detection: true
+  emulator_detection: false     # Disabled for compatibility
+  timing_checks: true
+  environment_checks: true
+  hardware_checks: false
+  tamper_detection: true
+  self_healing: false           # Disabled for simplicity
+  api_hooking_detection: true
+  breakpoint_detection: true
+  
+# Hardware-Assisted Protection
+hardware_protection:
+  use_aes_ni: true
+  use_rdrand: true
+  use_sgx: false
+  use_arm_pac: false
+
+# Optimization Strategies
+optimization:
+  compression_enabled: true     # Enable compression
+  dead_code_elimination: false  # Keep for obfuscation
+  inline_small_functions: true  # Inline small functions
+  constant_folding: false
+  aggressive_obfuscation: false # Moderate obfuscation
+
+# Resistance Targets
+resistance_targets:
+  static_analysis: 75%
+  dynamic_analysis: 70%
+  symbolic_execution: 75%
+  fuzzing: 65%
+  pattern_matching: 80%
+
+# Metrics Goals
+metrics_goals:
+  cyclomatic_complexity_increase: 250%  # 2.5x complexity
+  shannon_entropy: 5.5
+  instruction_count_increase: 150%      # 1.5x more instructions
+  cfg_edge_increase: 200%               # 2x more CFG edges
+  estimated_re_time: 200h
+
+# Reporting
+reporting:
+  detailed_metrics: true
+  ga_evolution_chart: true
+  resistance_heatmap: true
+  performance_profile: true
+  security_audit_report: true
+  tool_resistance_breakdown: true
+  quantum_metrics_dashboard: false
+
+# Logging
+logging:
+  level: INFO
+  verbose: false
+  log_file: phantron_balanced.log
+  trace_ga_evolution: false
+  trace_transformations: false

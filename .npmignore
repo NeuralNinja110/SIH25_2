@@ -1,0 +1,97 @@
+# .npmignore
+
+# Build artifacts
+build/
+*.o
+*.a
+*.so
+*.dylib
+
+# Test files
+tests/
+test/
+*.test.js
+*.spec.js
+
+# Documentation (keep only NPM_README.md)
+AUTO_TUNING_COMPLETE.md
+AUTO_TUNING_IMPLEMENTATION.md
+AUTO_TUNING_QUICKREF.md
+AUTO_TUNING_FILES.txt
+FINAL_RE_BENCHMARK_REPORT.md
+FINAL_TEST_REPORT.md
+MAOS_ENHANCEMENT_FINAL_REPORT.md
+QUANTUM_ENHANCEMENT_REPORT.md
+RE_BENCHMARK_SUMMARY.md
+RE_BENCHMARK_SUMMARY.txt
+STATUS.md
+SUCCESS_SUMMARY.md
+START_HERE.md
+
+# Build scripts
+build.sh
+build_windows.bat
+build_windows.ps1
+comprehensive_test.sh
+demo_auto_tune.sh
+quick_test_windows.bat
+run_auto_tune.sh
+run_comprehensive_tests.sh
+run_detailed_benchmark.sh
+run_fast_scientific_test.sh
+run_re_benchmark.sh
+run_re_benchmark_windows.bat
+run_scientific_tests.sh
+run_scientific_tests_v2.sh
+run_scientific_tests_windows.bat
+run_tests_windows.bat
+run_tests_windows.ps1
+
+# Results and logs
+auto_tune_results/
+benchmark_results/
+obfuscated_output/
+reverse_engineering/
+scientific_results/
+test_output/
+*.log
+build_log.txt
+obfuscation_report.json
+
+# Git
+.git/
+.gitignore
+.gitattributes
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# CMake
+CMakeLists.txt
+CMakeCache.txt
+cmake_install.cmake
+CTestTestfile.cmake
+compile_commands.json
+
+# C/C++ source (not needed for npm package)
+src/
+include/
+
+# Patches
+*.patch
+
+# Keep these
+!cli/
+!docs/AUTO_TUNING.md
+!config/
+!package.json
+!NPM_README.md
+!LICENSE
