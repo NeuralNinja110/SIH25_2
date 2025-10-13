@@ -2,7 +2,7 @@
 
 
 
-Professional code obfuscation CLI tool with LLVM integration, auto-tuning capabilities, and comprehensive reporting.[![npm version](https://img.shields.io/npm/v/@phantron/obfuscator.svg)](https://www.npmjs.com/package/@phantron/obfuscator)
+Professional code obfuscation CLI tool with LLVM integration, auto-tuning capabilities, and comprehensive reporting.[![npm version](https://img.shields.io/npm/v/@phantron/obfuscator.svg)](https://www.npmjs.com/package/phantron-obfuscator)
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
