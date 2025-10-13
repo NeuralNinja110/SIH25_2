@@ -1,0 +1,16 @@
+File,Level,Level Name,Original Size,Obfuscated Size,Size Increase %,Compile Time,Status
+test_medium.c,0,Size-Conservative,2754,18152,559.11,229,✅ PASS
+test_medium.c,1,Normal,2754,18416,568.70,172,✅ PASS
+test_medium.c,2,Maximum Security,2754,18688,578.58,143,✅ PASS
+test_easy.c,0,Size-Conservative,471,16624,3429.51,106,✅ PASS
+test_easy.c,1,Normal,471,16888,3485.56,102,✅ PASS
+test_easy.c,2,Maximum Security,471,17160,3543.31,114,✅ PASS
+test_difficult.c,0,Size-Conservative,7541,23472,211.26,197,✅ PASS
+test_difficult.c,1,Normal,7541,23736,214.76,190,✅ PASS
+test_difficult.c,2,Maximum Security,7541,24008,218.37,185,✅ PASS
+test_data_structures.c,0,Size-Conservative,9270,24000,158.90,192,✅ PASS
+test_data_structures.c,1,Normal,9270,24272,161.83,232,✅ PASS
+test_data_structures.c,2,Maximum Security,9270,24536,164.68,193,✅ PASS
+test_bit_manipulation.c,0,Size-Conservative,5156,24784,380.68,329,✅ PASS
+test_bit_manipulation.c,1,Normal,5156,25056,385.96,165,✅ PASS
+test_bit_manipulation.c,2,Maximum Security,5156,25320,391.08,167,✅ PASS

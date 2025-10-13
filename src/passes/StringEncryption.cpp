@@ -112,7 +112,7 @@ llvm::GlobalVariable* StringEncryption::createEncryptedString(llvm::Module& modu
                                                               uint8_t key) {
     std::vector<uint8_t> encrypted = encryptString(str, key);
     
-    // Create array type
+    // Create array type for encrypted data
     llvm::ArrayType* arrayType = llvm::ArrayType::get(
         llvm::Type::getInt8Ty(module.getContext()), encrypted.size());
     
@@ -125,17 +125,104 @@ llvm::GlobalVariable* StringEncryption::createEncryptedString(llvm::Module& modu
     
     llvm::Constant* arrayInit = llvm::ConstantArray::get(arrayType, elements);
     
-    // Create global variable
+    // Create encrypted global variable
     llvm::GlobalVariable* encryptedGlobal = new llvm::GlobalVariable(
         module,
         arrayType,
-        true,  // is constant
-        llvm::GlobalValue::PrivateLinkage,
+        false,  // NOT constant - will be decrypted at runtime
+        llvm::GlobalValue::InternalLinkage,
         arrayInit,
-        "enc.str"
+        "obf.enc.str"
     );
     
+    // Create decryption stub function
+    createDecryptionStub(module, encryptedGlobal, key, encrypted.size());
+    
     return encryptedGlobal;
+}
+
+void StringEncryption::createDecryptionStub(llvm::Module& module, 
+                                            llvm::GlobalVariable* encStr,
+                                                uint8_t key, size_t len) {
+    // Create constructor function that runs before main
+    llvm::FunctionType* ctorType = llvm::FunctionType::get(
+        llvm::Type::getVoidTy(module.getContext()), false);
+    
+    llvm::Function* ctor = llvm::Function::Create(
+        ctorType, 
+        llvm::GlobalValue::InternalLinkage,
+        "obf.decrypt.ctor", 
+        module);
+    
+    llvm::BasicBlock* entry = llvm::BasicBlock::Create(
+        module.getContext(), "entry", ctor);
+    llvm::IRBuilder<> builder(entry);
+    
+    // Get pointer to encrypted string
+    llvm::Type* int8Ty = llvm::Type::getInt8Ty(module.getContext());
+    llvm::PointerType* int8PtrTy = llvm::PointerType::get(int8Ty, 0);
+    llvm::Value* ptr = builder.CreateBitCast(encStr, int8PtrTy);
+    
+    // Create decryption loop
+    llvm::Value* idx = builder.CreateAlloca(builder.getInt64Ty());
+    builder.CreateStore(builder.getInt64(0), idx);
+    
+    llvm::BasicBlock* loopHeader = llvm::BasicBlock::Create(
+        module.getContext(), "loop.header", ctor);
+    llvm::BasicBlock* loopBody = llvm::BasicBlock::Create(
+        module.getContext(), "loop.body", ctor);
+    llvm::BasicBlock* loopEnd = llvm::BasicBlock::Create(
+        module.getContext(), "loop.end", ctor);
+    
+    builder.CreateBr(loopHeader);
+    
+    // Loop header
+    builder.SetInsertPoint(loopHeader);
+    llvm::Value* i = builder.CreateLoad(builder.getInt64Ty(), idx);
+    llvm::Value* cond = builder.CreateICmpULT(i, builder.getInt64(len));
+    builder.CreateCondBr(cond, loopBody, loopEnd);
+    
+    // Loop body - decrypt byte
+    builder.SetInsertPoint(loopBody);
+    llvm::Value* elemPtr = builder.CreateGEP(builder.getInt8Ty(), ptr, i);
+    llvm::Value* encByte = builder.CreateLoad(builder.getInt8Ty(), elemPtr);
+    llvm::Value* decByte = builder.CreateXor(encByte, builder.getInt8(key));
+    builder.CreateStore(decByte, elemPtr);
+    llvm::Value* nextI = builder.CreateAdd(i, builder.getInt64(1));
+    builder.CreateStore(nextI, idx);
+    builder.CreateBr(loopHeader);
+    
+    // Loop end
+    builder.SetInsertPoint(loopEnd);
+    builder.CreateRetVoid();
+    
+    // Register constructor to run before main
+    // Add to llvm.global_ctors array
+    llvm::Type* ctorStructTy = llvm::StructType::get(
+        builder.getInt32Ty(),
+        llvm::PointerType::get(ctorType, 0),
+        int8PtrTy
+    );
+    
+    std::vector<llvm::Constant*> ctorEntry;
+    ctorEntry.push_back(builder.getInt32(65535));  // priority
+    ctorEntry.push_back(ctor);  // function
+    ctorEntry.push_back(llvm::ConstantPointerNull::get(int8PtrTy));  // data
+    
+    llvm::Constant* ctorStruct = llvm::ConstantStruct::get(
+        llvm::cast<llvm::StructType>(ctorStructTy), ctorEntry);
+    
+    llvm::GlobalVariable* ctorsArray = module.getGlobalVariable("llvm.global_ctors");
+    if (!ctorsArray) {
+        llvm::ArrayType* arrayTy = llvm::ArrayType::get(ctorStructTy, 1);
+        std::vector<llvm::Constant*> ctors = {ctorStruct};
+        llvm::Constant* arrayInit = llvm::ConstantArray::get(arrayTy, ctors);
+        
+        new llvm::GlobalVariable(
+            module, arrayTy, false,
+            llvm::GlobalValue::AppendingLinkage,
+            arrayInit, "llvm.global_ctors");
+    }
 }
 
 } // namespace obfuscator

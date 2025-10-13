@@ -36,20 +36,10 @@ find_package(Threads REQUIRED)
 
 # Library sources
 set(LIB_SOURCES
-    # Original obfuscator components
+    # Core obfuscation infrastructure
     src/core/ObfuscationEngine.cpp
     src/core/ObfuscationPass.cpp
     src/core/PassManager.cpp
-    src/passes/ControlFlowFlattening.cpp
-    src/passes/OpaquePredicates.cpp
-    src/passes/InstructionSubstitution.cpp
-    src/passes/BogusControlFlow.cpp
-    src/passes/DeadCodeInjection.cpp
-    src/passes/StringEncryption.cpp
-    src/passes/FunctionVirtualization.cpp
-    src/passes/CallGraphObfuscation.cpp
-    src/passes/ConstantObfuscation.cpp
-    src/passes/AntiDebug.cpp
     src/config/ConfigParser.cpp
     src/config/ObfuscationConfig.cpp
     src/report/ReportGenerator.cpp
@@ -58,7 +48,21 @@ set(LIB_SOURCES
     src/utils/Logger.cpp
     src/utils/FileUtils.cpp
     
-    # MAOS components - NOW FULLY IMPLEMENTED AND ENABLED
+    # Advanced Quantum & Hardware Passes (v2.0)
+    src/passes/QuantumOpaquePredicates.cpp
+    src/passes/HardwareCacheObfuscation.cpp
+    src/passes/MBAObfuscation.cpp
+    src/passes/GrammarMetamorphic.cpp
+    
+    # MAOS Components (ATIE, PCGE, QIRL)
+    src/passes/ControlFlowFlattening.cpp
+    src/passes/StringEncryption.cpp
+    src/passes/DeadCodeInjection.cpp
+    src/passes/CallGraphObfuscation.cpp
+    src/passes/ConstantObfuscation.cpp
+    src/passes/AntiDebug.cpp
+    
+    # MAOS components
     src/core/ATIE.cpp
     src/core/QIRL.cpp
     src/core/PCGE.cpp

@@ -33,6 +33,7 @@ private:
     ObfuscationConfig config_;
     std::string inputFile_;
     std::string outputFile_;
+    std::string configFile_;
     bool showHelp_;
     bool showVersion_;
 

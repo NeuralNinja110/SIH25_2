@@ -63,6 +63,10 @@ struct ObfuscationConfig {
     bool enableDeadCodeInjection;
     uint32_t deadCodeRatio;  // Percentage (0-100)
     
+    // Advanced quantum and hardware obfuscation (v2.0)
+    bool enableHardwareCacheObfuscation;
+    uint32_t cacheObfuscationIntensity;  // Percentage (0-100)
+    
     // Data obfuscation
     bool enableStringEncryption;
     std::string stringEncryptionAlgorithm;  // "xor", "aes", "custom"

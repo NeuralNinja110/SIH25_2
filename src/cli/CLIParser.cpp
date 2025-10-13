@@ -6,6 +6,7 @@
  */
 
 #include "CLIParser.h"
+#include "ConfigParser.h"
 #include <iostream>
 #include <cstring>
 
@@ -53,12 +54,38 @@ bool CLIParser::parse(int argc, char* argv[]) {
         } else if (arg == "-l" || arg == "--level") {
             if (i + 1 < argc) {
                 std::string level = argv[++i];
-                if (level == "low") {
+                if (level == "0" || level == "low") {
                     config_.applyPreset(ObfuscationLevel::LOW);
-                } else if (level == "medium") {
+                } else if (level == "1" || level == "medium") {
                     config_.applyPreset(ObfuscationLevel::MEDIUM);
-                } else if (level == "high") {
+                } else if (level == "2" || level == "high") {
                     config_.applyPreset(ObfuscationLevel::HIGH);
+                } else {
+                    int levelNum = std::stoi(level);
+                    if (levelNum <= 0) {
+                        config_.applyPreset(ObfuscationLevel::LOW);
+                    } else if (levelNum == 1) {
+                        config_.applyPreset(ObfuscationLevel::MEDIUM);
+                    } else {
+                        config_.applyPreset(ObfuscationLevel::HIGH);
+                    }
+                }
+            }
+        } else if (arg == "-C" || arg == "--complexity") {
+            if (i + 1 < argc) {
+                int complexity = std::stoi(argv[++i]);
+                // Use complexity to adjust obfuscation intensity
+                config_.flatteningComplexity = std::min(100, std::max(10, complexity * 30));
+                config_.constantObfuscationComplexity = std::min(100, std::max(10, complexity * 30));
+                config_.obfuscationCycles = std::max(1, complexity);
+            }
+        } else if (arg == "-c" || arg == "--config") {
+            if (i + 1 < argc) {
+                configFile_ = argv[++i];
+                // Parse config file here
+                ConfigParser parser;
+                if (!parser.parseFile(configFile_, config_)) {
+                    std::cerr << "Warning: Failed to parse config file, using defaults\n";
                 }
             }
         } else if (arg == "--cycles") {

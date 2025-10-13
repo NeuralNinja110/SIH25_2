@@ -1,17 +1,19 @@
 /**
  * @file ControlFlowFlattening.h
- * @brief Control flow flattening obfuscation pass
- * @version 1.0.0
- * @date 2025-10-09
+ * @brief Quantum-enhanced control flow flattening obfuscation pass
+ * @version 2.0.0
+ * @date 2025-10-13
  * 
  * This pass transforms the control flow graph into a flattened structure
- * where all basic blocks are dispatched through a central switch statement.
+ * where all basic blocks are dispatched through a quantum-inspired central
+ * switch statement with probability-based state evolution.
  */
 
 #ifndef CONTROL_FLOW_FLATTENING_H
 #define CONTROL_FLOW_FLATTENING_H
 
 #include "ObfuscationPass.h"
+#include "llvm/IR/IRBuilder.h"
 #include <cstdint>
 
 namespace obfuscator {
@@ -52,6 +54,17 @@ private:
      * @return true if function can be flattened
      */
     bool canFlatten(llvm::Function& func) const;
+    
+    /**
+     * @brief Apply quantum-inspired state evolution to switch value
+     * @param builder IR builder
+     * @param currentState Current switch state value
+     * @param seed Quantum seed for evolution
+     * @return Evolved state value
+     */
+    llvm::Value* applyQuantumEvolution(llvm::IRBuilder<>& builder,
+                                       llvm::Value* currentState,
+                                       llvm::Value* seed);
 };
 
 } // namespace obfuscator

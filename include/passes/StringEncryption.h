@@ -24,6 +24,8 @@ private:
     std::vector<uint8_t> encryptString(const std::string& str, uint8_t key);
     llvm::GlobalVariable* createEncryptedString(llvm::Module& module, 
                                                 const std::string& str, uint8_t key);
+    void createDecryptionStub(llvm::Module& module, llvm::GlobalVariable* encStr,
+                             uint8_t key, size_t len);
 };
 
 } // namespace obfuscator

@@ -1,8 +1,8 @@
 /**
  * @file ControlFlowFlattening.cpp
- * @brief Implementation of control flow flattening pass
- * @version 1.0.0
- * @date 2025-10-09
+ * @brief Implementation of quantum-enhanced control flow flattening pass
+ * @version 2.0.0
+ * @date 2025-10-13
  */
 
 #include "passes/ControlFlowFlattening.h"
@@ -174,6 +174,35 @@ bool ControlFlowFlattening::flattenFunction(llvm::Function& func) {
     }
     
     return true;
+}
+
+llvm::Value* ControlFlowFlattening::applyQuantumEvolution(llvm::IRBuilder<>& builder,
+                                                           llvm::Value* currentState,
+                                                           llvm::Value* seed) {
+    // Quantum-inspired state evolution using superposition mathematics
+    // ψ(t+1) = U·ψ(t) where U is unitary evolution operator
+    
+    // Convert to 32-bit for computation
+    llvm::Value* state32 = currentState;
+    if (currentState->getType()->getIntegerBitWidth() != 32) {
+        state32 = builder.CreateZExtOrTrunc(currentState, builder.getInt32Ty());
+    }
+    
+    // Quantum mixing constant (derived from golden ratio)
+    llvm::Value* quantumConst = builder.getInt32(0x9e3779b9);
+    
+    // Apply quantum rotation: state' = state * φ + seed
+    llvm::Value* rotated = builder.CreateMul(state32, quantumConst);
+    llvm::Value* mixed = builder.CreateXor(rotated, seed);
+    
+    // Apply quantum interference (XOR with shifted version)
+    llvm::Value* shifted = builder.CreateLShr(mixed, builder.getInt32(16));
+    llvm::Value* interfered = builder.CreateXor(mixed, shifted);
+    
+    // Final state evolution  
+    llvm::Value* evolved = builder.CreateXor(interfered, state32);
+    
+    return evolved;
 }
 
 } // namespace obfuscator

@@ -19,8 +19,9 @@ public:
 
 private:
     uint32_t insertAntiDebugChecks(llvm::Module& module);
-    void createPtraceCheck(llvm::Function& func);
-    void createTimingCheck(llvm::Function& func);
+    void createPtraceDetection(llvm::Module& module);
+    void createTimingCheck(llvm::Module& module);
+    void createDebuggerDetection(llvm::Module& module);
 };
 
 } // namespace obfuscator
