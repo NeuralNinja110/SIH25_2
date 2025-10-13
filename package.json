@@ -1,5 +1,5 @@
 {
-  "name": "@phantron/obfuscator",
+  "name": "phantron-obfuscator",
   "version": "2.0.0",
   "description": "Professional code obfuscation CLI with auto-tuning, multi-file support, and comprehensive HTML reporting",
   "main": "cli/index.js",
