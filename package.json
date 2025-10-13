@@ -1,6 +1,6 @@
 {
   "name": "phantron-obfuscator",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "Professional code obfuscation CLI with auto-tuning, multi-file support, and comprehensive HTML reporting",
   "main": "cli/index.js",
   "bin": {
