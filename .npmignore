@@ -46,14 +46,17 @@ run_scientific_tests_v2.sh
 run_scientific_tests_windows.bat
 run_tests_windows.bat
 run_tests_windows.ps1
+maos_launcher.bat
 
 # Results and logs
 auto_tune_results/
 benchmark_results/
 obfuscated_output/
+obfuscation_results/
 reverse_engineering/
 scientific_results/
 test_output/
+test_output
 *.log
 build_log.txt
 obfuscation_report.json
@@ -84,6 +87,10 @@ compile_commands.json
 # C/C++ source (not needed for npm package)
 src/
 include/
+
+# Test files
+test_hello.c
+test_utils.c
 
 # Patches
 *.patch
