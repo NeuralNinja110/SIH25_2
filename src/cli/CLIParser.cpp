@@ -12,7 +12,9 @@
 
 namespace obfuscator {
 
-CLIParser::CLIParser() : showHelp_(false), showVersion_(false) {
+CLIParser::CLIParser() : showHelp_(false), showVersion_(false), 
+                         autoTuneEnabled_(false), autoTuneIterations_(5),
+                         autoTuneGoal_("balanced") {
     setDefaults();
 }
 
@@ -116,6 +118,31 @@ bool CLIParser::parse(int argc, char* argv[]) {
             if (i + 1 < argc) {
                 config_.reportFormat = argv[++i];
             }
+        } else if (arg == "--auto-tune") {
+            autoTuneEnabled_ = true;
+            if (i + 1 < argc) {
+                std::string next = argv[i + 1];
+                if (next == "yes" || next == "true" || next == "enable") {
+                    ++i;
+                }
+            }
+        } else if (arg == "--auto-tune-iterations") {
+            if (i + 1 < argc) {
+                autoTuneIterations_ = std::stoi(argv[++i]);
+                if (autoTuneIterations_ < 1) autoTuneIterations_ = 1;
+                if (autoTuneIterations_ > 50) autoTuneIterations_ = 50;
+            }
+        } else if (arg == "--auto-tune-goal") {
+            if (i + 1 < argc) {
+                autoTuneGoal_ = argv[++i];
+                if (autoTuneGoal_ != "security" && 
+                    autoTuneGoal_ != "balanced" && 
+                    autoTuneGoal_ != "size") {
+                    std::cerr << "Warning: Invalid auto-tune goal '" << autoTuneGoal_ 
+                              << "', using 'balanced'\n";
+                    autoTuneGoal_ = "balanced";
+                }
+            }
         } else if (inputFile_.empty()) {
             inputFile_ = arg;
         } else if (outputFile_.empty()) {
@@ -144,9 +171,17 @@ void CLIParser::printHelp() const {
     std::cout << "  -i, --input <file>         Input source file (C/C++)\n";
     std::cout << "  -o, --output <file>        Output obfuscated binary\n";
     std::cout << "  -l, --level <level>        Obfuscation level: low, medium, high (default: medium)\n";
+    std::cout << "  -c, --config <file>        Load configuration from YAML file\n";
     std::cout << "  --cycles <n>               Number of obfuscation cycles (default: 3)\n";
     std::cout << "  --seed <n>                 Random seed for reproducibility\n";
     std::cout << "  --verbose                  Enable verbose output\n";
+    std::cout << "\nAuto-Tuning Options:\n";
+    std::cout << "  --auto-tune                Enable automatic parameter optimization\n";
+    std::cout << "  --auto-tune-iterations <n> Number of optimization iterations (1-50, default: 5)\n";
+    std::cout << "  --auto-tune-goal <goal>    Optimization goal:\n";
+    std::cout << "                               security  - Maximize RE difficulty (80% weight)\n";
+    std::cout << "                               balanced  - Balance security/performance (60/25/15%)\n";
+    std::cout << "                               size      - Minimize size with good security (50/20/30%)\n";
     std::cout << "\nObfuscation Options:\n";
     std::cout << "  --no-flatten               Disable control flow flattening\n";
     std::cout << "  --no-strings               Disable string encryption\n";
@@ -157,9 +192,17 @@ void CLIParser::printHelp() const {
     std::cout << "  --report <path>            Report output path (default: obfuscation_report)\n";
     std::cout << "  --report-format <format>   Report format: json, html, both (default: json)\n";
     std::cout << "\nExamples:\n";
-    std::cout << "  llvm-obfuscator input.c output\n";
-    std::cout << "  llvm-obfuscator -l high --cycles 5 input.cpp output\n";
-    std::cout << "  llvm-obfuscator --verbose --enable-anti-debug input.c\n\n";
+    std::cout << "  # Basic obfuscation\n";
+    std::cout << "  llvm-obfuscator input.c output\n\n";
+    std::cout << "  # High security with auto-tuning (5 iterations)\n";
+    std::cout << "  llvm-obfuscator --auto-tune --auto-tune-iterations 5 input.c\n\n";
+    std::cout << "  # Auto-tune for maximum security (10 iterations)\n";
+    std::cout << "  llvm-obfuscator --auto-tune --auto-tune-iterations 10 \\\n";
+    std::cout << "                  --auto-tune-goal security input.cpp output\n\n";
+    std::cout << "  # Manual high-level obfuscation\n";
+    std::cout << "  llvm-obfuscator -l high --cycles 5 input.cpp output\n\n";
+    std::cout << "  # Load config and auto-tune\n";
+    std::cout << "  llvm-obfuscator -c config.yaml --auto-tune --auto-tune-iterations 8 input.c\n\n";
 }
 
 void CLIParser::printVersion() const {

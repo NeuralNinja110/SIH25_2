@@ -25,6 +25,9 @@ public:
     const std::string& getOutputFile() const { return outputFile_; }
     bool shouldShowHelp() const { return showHelp_; }
     bool shouldShowVersion() const { return showVersion_; }
+    bool isAutoTuneEnabled() const { return autoTuneEnabled_; }
+    int getAutoTuneIterations() const { return autoTuneIterations_; }
+    const std::string& getAutoTuneGoal() const { return autoTuneGoal_; }
 
     void printHelp() const;
     void printVersion() const;
@@ -36,6 +39,9 @@ private:
     std::string configFile_;
     bool showHelp_;
     bool showVersion_;
+    bool autoTuneEnabled_;
+    int autoTuneIterations_;
+    std::string autoTuneGoal_;
 
     void setDefaults();
     bool parseArgument(const std::string& arg, const std::string& value);

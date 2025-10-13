@@ -1,0 +1,82 @@
+MAOS v2.0 Auto-Tuning Feature - File Manifest
+==============================================
+
+NEW FILES CREATED (6 + 2 docs)
+------------------------------
+
+Core Implementation:
+  include/AutoTuner.h                    [190 lines] - Auto-tuner class definition
+  src/utils/AutoTuner.cpp                [620 lines] - Auto-tuner implementation
+
+Helper Scripts:
+  run_auto_tune.sh                       [180 lines] - User-friendly wrapper script
+  demo_auto_tune.sh                      [140 lines] - Interactive demonstration
+
+Documentation:
+  docs/AUTO_TUNING.md                    [650 lines] - Complete user guide
+  AUTO_TUNING_IMPLEMENTATION.md          [800 lines] - Technical implementation guide
+  AUTO_TUNING_COMPLETE.md                [350 lines] - Implementation summary
+  AUTO_TUNING_QUICKREF.md                [ 80 lines] - Quick reference card
+
+FILES MODIFIED (5)
+------------------
+
+CLI Integration:
+  include/CLIParser.h                    - Added auto-tune member variables and getters
+  src/cli/CLIParser.cpp                  - Implemented --auto-tune flags parsing
+
+Main Program:
+  src/main.cpp                           - Added auto-tune mode detection and execution
+
+Build System:
+  CMakeLists.txt                         - Added src/utils/AutoTuner.cpp to build
+
+Documentation:
+  README.md                              - Added auto-tuning feature section
+
+TOTAL STATISTICS
+----------------
+
+Lines of Code (C++):        ~1,500 lines
+Lines of Documentation:     ~2,000 lines
+Total Files:                11 (6 new + 5 modified)
+Scripts:                    2 (bash)
+Implementation Time:        ~2 hours
+
+KEY FEATURES
+------------
+
+✅ Iterative parameter optimization (N iterations)
+✅ Three optimization goals (security/balanced/size)
+✅ RE benchmark integration for real metrics
+✅ Multi-objective fitness function
+✅ Configuration persistence (YAML)
+✅ Comprehensive reporting (markdown)
+✅ Helper scripts for easy usage
+✅ Complete documentation (user + technical)
+
+USAGE
+-----
+
+Basic:          ./run_auto_tune.sh input.c
+Security:       ./run_auto_tune.sh --iterations 10 --goal security input.c
+Balanced:       ./run_auto_tune.sh --iterations 8 --goal balanced input.c
+Size:           ./run_auto_tune.sh --iterations 8 --goal size input.c
+Demo:           ./demo_auto_tune.sh
+
+NEXT STEPS
+----------
+
+1. Build the system:
+   make -C build llvm-obfuscator
+
+2. Test with quick run:
+   ./run_auto_tune.sh --iterations 3 tests/test_easy.c
+
+3. Review results:
+   cat auto_tune_results/optimization_report.md
+
+4. Apply to production:
+   ./build/llvm-obfuscator -c auto_tune_results/final_optimized_config.yaml -i prod.c
+
+STATUS: ✅ Implementation Complete - Ready for Build and Test

@@ -23,6 +23,7 @@ A professional-grade, patent-worthy code obfuscation tool built with LLVM infras
 
 ### Advanced Features
 
+- **🤖 Auto-Tuning System (NEW v2.0)**: Automatically discovers optimal obfuscation parameters through iterative optimization
 - **Multi-Cycle Obfuscation**: Apply transformations multiple times for enhanced security
 - **Configurable Complexity**: Fine-grained control over each obfuscation technique
 - **Cross-Platform Support**: Generate binaries for Linux and Windows (x86_64, ARM64)
@@ -129,6 +130,16 @@ cd build
     --no-flatten \
     --seed 12345 \
     input.cpp -o output
+
+# 🤖 Auto-Tuning (NEW v2.0) - Automatically optimize parameters
+./llvm-obfuscator \
+    --auto-tune \
+    --auto-tune-iterations 8 \
+    --auto-tune-goal security \
+    input.c
+
+# Or use the helper script
+./run_auto_tune.sh --iterations 8 --goal security input.c
 ```
 
 ### Command-Line Options
@@ -140,9 +151,15 @@ Options:
   -i, --input <file>         Input source file (C/C++)
   -o, --output <file>        Output obfuscated binary
   -l, --level <level>        Obfuscation level: low, medium, high
+  -c, --config <file>        Load configuration from YAML file
   --cycles <n>               Number of obfuscation cycles (default: 3)
   --seed <n>                 Random seed for reproducibility
   --verbose                  Enable verbose output
+
+Auto-Tuning Options (NEW v2.0):
+  --auto-tune                Enable automatic parameter optimization
+  --auto-tune-iterations <n> Number of optimization iterations (1-50, default: 5)
+  --auto-tune-goal <goal>    Optimization goal: security, balanced, size
 
 Obfuscation Options:
   --no-flatten               Disable control flow flattening
@@ -155,6 +172,44 @@ Report Options:
   --report <path>            Report output path
   --report-format <format>   Report format: json, html, both
 ```
+
+## 🤖 Auto-Tuning System (v2.0)
+
+The Auto-Tuning system automatically discovers optimal obfuscation parameters through iterative evaluation:
+
+### Quick Start
+
+```bash
+# Basic auto-tuning (5 iterations, balanced goal)
+./run_auto_tune.sh input.c
+
+# Security-focused (10 iterations)
+./run_auto_tune.sh --iterations 10 --goal security input.c
+
+# Size-optimized for embedded systems
+./run_auto_tune.sh --iterations 8 --goal size embedded_code.c
+```
+
+### How It Works
+
+1. **Baseline**: Evaluates starting configuration
+2. **Iteration**: Generates and tests 3-5 configuration variants
+3. **Selection**: Keeps best configuration based on RE difficulty metrics
+4. **Final Run**: Produces optimized binary with best parameters
+
+### Optimization Goals
+
+- **security**: Maximize RE difficulty (80% weight) - Best for IP protection
+- **balanced**: Balance security/performance (60/25/15%) - General use
+- **size**: Minimize size overhead (50/20/30%) - Embedded systems
+
+### Output
+
+- `final_optimized_config.yaml` - Best configuration (reusable!)
+- `final_optimized_binary` - Optimized binary
+- `optimization_report.md` - Comprehensive analysis
+
+**For complete documentation, see:** `docs/AUTO_TUNING.md`
 
 ## 📊 Obfuscation Levels
 

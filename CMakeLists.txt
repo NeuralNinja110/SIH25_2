@@ -47,6 +47,7 @@ set(LIB_SOURCES
     src/utils/RandomGenerator.cpp
     src/utils/Logger.cpp
     src/utils/FileUtils.cpp
+    src/utils/AutoTuner.cpp
     
     # Advanced Quantum & Hardware Passes (v2.0)
     src/passes/QuantumOpaquePredicates.cpp
