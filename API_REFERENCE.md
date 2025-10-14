@@ -591,9 +591,8 @@ done
 
 ## See Also
 
-- [README.md](https://github.com/NeuralNinja110/SIH25_2/blob/main/README.md) - General overview
-- [INSTALLATION.md](https://github.com/NeuralNinja110/SIH25_2/blob/main/INSTALLATION.md) - Installation guide
-- [GitHub Repository](https://github.com/NeuralNinja110/SIH25_2) - Source code
+- [INSTALLATION.md](https://gist.github.com/NeuralNinja110/b8be1d6452830662977d696c114d80be) - Installation guide
+- [CLI_DOCUMENTATION.md](https://gist.github.com/NeuralNinja110/ef656c198bdaf17f5e7ce5a46d04cc5f) - CLI usage documentation
 - [NPM Package](https://www.npmjs.com/package/phantron-obfuscator) - Package page
 
 ---

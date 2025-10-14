@@ -101,9 +101,8 @@ npm run obfuscate -- -i input.c -p linux -m normal
 For development or contributing to Phantron.
 
 ```bash
-# Clone the repository
-git clone https://github.com/NeuralNinja110/SIH25_2.git
-cd SIH25_2
+# Install from npm
+npm install phantron-obfuscator
 
 # Install dependencies
 npm install
@@ -425,11 +424,10 @@ npm list -g phantron-obfuscator
 
 After successful installation:
 
-1. **Read the README**: [README.md](https://github.com/NeuralNinja110/SIH25_2/blob/main/README.md)
-2. **Review API Reference**: [API_REFERENCE.md](https://github.com/NeuralNinja110/SIH25_2/blob/main/API_REFERENCE.md)
-3. **Try Examples**: Run `phantron examples` for common usage patterns
-4. **Explore Modes**: Test different obfuscation modes with sample files
-5. **Enable Auto-Tuning**: Experiment with auto-tuning for optimal results
+1. **Review Documentation**: See the comprehensive guides at the Gist links
+2. **Try Examples**: Run `phantron examples` for common usage patterns
+3. **Explore Modes**: Test different obfuscation modes with sample files
+4. **Enable Auto-Tuning**: Experiment with auto-tuning for optimal results
 
 ## Getting Help
 
@@ -437,7 +435,6 @@ If you encounter issues not covered in this guide:
 
 - **Check Prerequisites**: Run `phantron check`
 - **View Examples**: Run `phantron examples`
-- **GitHub Issues**: [https://github.com/NeuralNinja110/SIH25_2/issues](https://github.com/NeuralNinja110/SIH25_2/issues)
 - **NPM Package**: [https://www.npmjs.com/package/phantron-obfuscator](https://www.npmjs.com/package/phantron-obfuscator)
 
 ---

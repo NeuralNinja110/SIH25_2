@@ -1,6 +1,6 @@
 {
   "name": "phantron-obfuscator",
-  "version": "2.0.3",
+  "version": "2.0.4",
   "description": "Professional code obfuscation CLI with auto-tuning, multi-file support, and comprehensive HTML reporting",
   "main": "cli/index.js",
   "bin": {
@@ -32,14 +32,6 @@
     "email": "support@phantron.dev"
   },
   "license": "MIT",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/NeuralNinja110/SIH25_2.git"
-  },
-  "bugs": {
-    "url": "https://github.com/NeuralNinja110/SIH25_2/issues"
-  },
-  "homepage": "https://github.com/NeuralNinja110/SIH25_2#readme",
   "engines": {
     "node": ">=14.0.0"
   },

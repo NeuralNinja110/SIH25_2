@@ -42,7 +42,7 @@ phantron --version
 phantron check
 ```
 
-For detailed installation instructions, see [INSTALLATION.md](https://github.com/NeuralNinja110/SIH25_2/blob/main/INSTALLATION.md).
+For detailed installation instructions, see [INSTALLATION.md](https://gist.github.com/NeuralNinja110/b8be1d6452830662977d696c114d80be).
 
 ## Quick Start
 
@@ -93,7 +93,7 @@ phantron --version            # Show version number
 | `-a, --auto-tune` | Enable auto-tuning | Flag (no value) |
 | `-n, --iterations <n>` | Auto-tune iterations | Number (default: 5) |
 
-For complete API reference, see [API_REFERENCE.md](https://github.com/NeuralNinja110/SIH25_2/blob/main/API_REFERENCE.md).
+For complete API reference, see [API_REFERENCE.md](https://gist.github.com/NeuralNinja110/8daf8026b1abc5eb787cd0b7545e28b6).
 
 ## Obfuscation Modes
 
@@ -226,16 +226,17 @@ Based on extensive testing:
 
 ## Documentation
 
-- [INSTALLATION.md](https://github.com/NeuralNinja110/SIH25_2/blob/main/INSTALLATION.md) - Detailed installation and setup guide
-- [API_REFERENCE.md](https://github.com/NeuralNinja110/SIH25_2/blob/main/API_REFERENCE.md) - Complete API and usage reference
+- [INSTALLATION.md](https://gist.github.com/NeuralNinja110/b8be1d6452830662977d696c114d80be) - Detailed installation and setup guide
+- [API_REFERENCE.md](https://gist.github.com/NeuralNinja110/8daf8026b1abc5eb787cd0b7545e28b6) - Complete API and usage reference
+- [CLI_DOCUMENTATION.md](https://gist.github.com/NeuralNinja110/ef656c198bdaf17f5e7ce5a46d04cc5f) - Comprehensive CLI usage documentation
 
 ## Support
 
 ### Getting Help
 
-- **GitHub Issues**: [Report bugs or request features](https://github.com/NeuralNinja110/SIH25_2/issues)
-- **Documentation**: Review the guides in this repository
+- **Documentation**: Review the comprehensive guides linked above
 - **Examples**: Run `phantron examples` for common usage patterns
+- **NPM Package**: Visit the package page for updates and information
 
 ### Troubleshooting
 
@@ -253,22 +254,15 @@ This will verify:
 
 ## Contributing
 
-Contributions are welcome. Please:
-
-1. Fork the repository
-2. Create a feature branch
-3. Make your changes with tests
-4. Submit a pull request
+Contributions and feedback are welcome. Please contact the maintainer for collaboration opportunities.
 
 ## License
 
-MIT License - see [LICENSE](https://github.com/NeuralNinja110/SIH25_2/blob/main/LICENSE) file for details.
+MIT License - see LICENSE file for details.
 
 ## Links
 
 - **NPM Package**: [https://www.npmjs.com/package/phantron-obfuscator](https://www.npmjs.com/package/phantron-obfuscator)
-- **GitHub Repository**: [https://github.com/NeuralNinja110/SIH25_2](https://github.com/NeuralNinja110/SIH25_2)
-- **Issue Tracker**: [https://github.com/NeuralNinja110/SIH25_2/issues](https://github.com/NeuralNinja110/SIH25_2/issues)
 
 ## Acknowledgments
 
