@@ -11,8 +11,24 @@
     "start": "node cli/index.js",
     "test": "node cli/index.js --help",
     "build": "make -C build llvm-obfuscator",
+    "build:standalone": "bash scripts/build/build-standalone.sh",
+    "build:standalone:win": "powershell -ExecutionPolicy Bypass -File scripts/build/build-standalone.ps1",
     "demo": "./demo_auto_tune.sh",
     "docs": "cat docs/AUTO_TUNING.md"
+  },
+  "pkg": {
+    "assets": [
+      "build/**/*",
+      "config/**/*.yaml",
+      "cli/**/*.js"
+    ],
+    "targets": [
+      "node18-linux-x64",
+      "node18-linux-arm64",
+      "node18-win-x64",
+      "node18-win-arm64"
+    ],
+    "outputPath": "dist"
   },
   "keywords": [
     "obfuscation",

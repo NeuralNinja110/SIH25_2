@@ -60,26 +60,48 @@ Sanjana Suresh
 
 ## Installation
 
-### Global Installation (Recommended)
+### Option 1: Standalone Executables (No Dependencies!) ⭐
 
+Download pre-built binaries for your platform from the [Releases](https://github.com/NeuralNinja110/SIH25_2/releases) page:
+
+**Windows:**
+```cmd
+# Download phantron-win-x64.exe (or phantron-win-arm64.exe)
+# Run install.bat as Administrator
+phantron --version
+```
+
+**Linux:**
+```bash
+# Download phantron-linux-x64 (or phantron-linux-arm64)
+chmod +x phantron-linux-x64
+sudo ./install.sh
+phantron --version
+```
+
+✅ **Advantages:** No Node.js required, no dependencies, works immediately!
+
+See [DISTRIBUTION.md](DISTRIBUTION.md) for complete standalone installation guide.
+
+### Option 2: NPM Installation (Requires Node.js)
+
+**Global Installation (Recommended):**
 ```bash
 npm install -g phantron-obfuscator
 ```
 
-### Local Installation
-
+**Local Installation:**
 ```bash
 npm install phantron-obfuscator
 ```
 
-### Verify Installation
-
+**Verify Installation:**
 ```bash
 phantron --version
 phantron check
 ```
 
-For detailed installation instructions, see [INSTALLATION.md](https://gist.github.com/NeuralNinja110/b8be1d6452830662977d696c114d80be).
+For detailed installation instructions, see [INSTALLATION.md](INSTALLATION.md).
 
 ## Quick Start
 
