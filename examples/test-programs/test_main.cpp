@@ -44,7 +44,7 @@ bool runTest(const std::string& testName, const std::string& inputFile, Obfuscat
 }
 
 int main() {
-    std::cout << "LLVM Obfuscator Test Suite\n";
+    std::cout << "Phantron LLVM Obfuscator Test Suite\n";
     std::cout << "===========================\n";
     
     int passed = 0;

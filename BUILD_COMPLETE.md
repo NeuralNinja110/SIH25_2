@@ -27,7 +27,7 @@ All files are located in the `dist/` directory:
 
 | File | Platform | Size | Description |
 |------|----------|------|-------------|
-| `llvm-obfuscator` | Linux | 12.36 MB | LLVM-based obfuscation engine (ELF binary) |
+| `llvm-obfuscator` | Linux | 12.36 MB | Phantron LLVM Obfuscator engine (ELF binary) |
 
 ### Installation & Configuration
 
@@ -217,7 +217,7 @@ cd SIH25_2
 npm install
 npm install -g pkg
 
-# Build LLVM obfuscator (Linux/WSL)
+# Build Phantron LLVM Obfuscator (Linux/WSL)
 mkdir build && cd build
 cmake .. -DCMAKE_BUILD_TYPE=Release
 cmake --build . --config Release

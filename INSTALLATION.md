@@ -131,7 +131,7 @@ Expected output:
 Prerequisites Check
 -------------------
 Node.js                     PASS    v14.x.x
-LLVM Obfuscator Binary      PASS    Found
+Phantron LLVM Obfuscator    PASS    Found
 Configuration Files         PASS    All found
 GCC Compiler                PASS    Available
 ```
@@ -184,7 +184,7 @@ phantron check
 This verifies:
 - Node.js version compatibility
 - npm package installation
-- LLVM obfuscator binary availability
+- Phantron LLVM Obfuscator binary availability
 - Configuration files integrity
 - GCC compiler availability
 - MinGW cross-compiler (if needed)
@@ -274,7 +274,7 @@ phantron interactive
 
 ### Issue: LLVM Binary Not Found
 
-**Symptom**: `LLVM obfuscator binary not found`
+**Symptom**: `Phantron LLVM Obfuscator binary not found`
 
 **Solution**:
 The binary should be included in the package. Verify:

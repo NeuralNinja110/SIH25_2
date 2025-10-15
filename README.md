@@ -250,7 +250,7 @@ phantron obfuscate -i sensitive.c -p linux -m security -a -n 10
 ## Requirements
 
 - **Node.js** >= 14.0.0
-- **LLVM Obfuscator Binary** (included in package)
+- **Phantron LLVM Obfuscator Binary** (included in package)
 - **GCC** (for Linux targets)
 - **MinGW** (for Windows cross-compilation on Linux)
 
@@ -307,7 +307,7 @@ phantron check
 
 This will verify:
 - Node.js version compatibility
-- LLVM obfuscator binary availability
+- Phantron LLVM Obfuscator binary availability
 - Compiler availability (GCC/MinGW)
 - Configuration file integrity
 

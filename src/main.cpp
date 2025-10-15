@@ -1,6 +1,6 @@
 /**
  * @file main.cpp
- * @brief Main entry point for LLVM obfuscator
+ * @brief Main entry point for Phantron LLVM Obfuscator
  * @version 2.0.0
  * @date 2025-10-13
  */

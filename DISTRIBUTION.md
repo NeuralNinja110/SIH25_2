@@ -16,7 +16,7 @@ Complete guide for building and distributing standalone Phantron Obfuscator CLI 
 The build system creates standalone executables that bundle:
 - Node.js runtime
 - CLI code
-- LLVM obfuscator binary
+- Phantron LLVM Obfuscator binary
 - Configuration files
 - Installation scripts
 
@@ -90,7 +90,7 @@ npm run build:standalone:win
 npm install
 npm install -g pkg
 
-# Build LLVM obfuscator
+# Build Phantron LLVM Obfuscator
 mkdir -p build
 cd build
 cmake .. -DCMAKE_BUILD_TYPE=Release

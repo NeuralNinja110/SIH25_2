@@ -637,7 +637,7 @@ class ObfuscationEngine {
   }
 
   async compileForPlatform() {
-    // Note: The LLVM obfuscator now outputs binaries directly
+    // Note: The Phantron LLVM Obfuscator now outputs binaries directly
     // This method is kept for compatibility but the work is done in realObfuscation
     this.compiledFiles = this.outputFiles;
     Utils.log(`Binary compilation completed`, 'success');
@@ -885,7 +885,7 @@ function checkPrerequisites() {
       }
     },
     {
-      name: 'LLVM Obfuscator Binary',
+      name: 'Phantron LLVM Obfuscator',
       check: () => {
         const exists = Utils.fileExists(OBFUSCATOR_BINARY);
         return { status: exists, message: exists ? 'Found' : 'Not found - run build.sh first' };
