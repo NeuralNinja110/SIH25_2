@@ -8,7 +8,7 @@ dist/
 ├── phantron-win-arm64.exe      (25.83 MB) - Windows ARM64
 ├── phantron-linux-x64          (44.06 MB) - Linux Intel/AMD 64-bit
 ├── phantron-linux-arm64        (42.66 MB) - Linux ARM64
-├── llvm-obfuscator             (12.36 MB) - Phantron LLVM Obfuscator (Linux)
+├── phantron-llvm-obfuscator             (12.36 MB) - Phantron LLVM Obfuscator (Linux)
 ├── install.bat                          - Windows installer
 ├── install.sh                           - Linux installer
 ├── README.txt                           - User guide

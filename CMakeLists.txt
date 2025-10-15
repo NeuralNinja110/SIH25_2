@@ -95,8 +95,8 @@ target_link_libraries(obfuscator_lib PUBLIC ${llvm_libs})
 target_link_libraries(obfuscator_lib PRIVATE Threads::Threads)
 
 # Main executable
-add_executable(llvm-obfuscator src/main.cpp src/cli/CLIParser.cpp)
-target_link_libraries(llvm-obfuscator PRIVATE obfuscator_lib)
+add_executable(phantron-llvm-obfuscator src/main.cpp src/cli/CLIParser.cpp)
+target_link_libraries(phantron-llvm-obfuscator PRIVATE obfuscator_lib)
 
 # Test executable
 add_executable(obfuscator_tests 
@@ -106,7 +106,7 @@ add_executable(obfuscator_tests
 target_link_libraries(obfuscator_tests PRIVATE obfuscator_lib)
 
 # Install targets
-install(TARGETS llvm-obfuscator DESTINATION bin)
+install(TARGETS phantron-llvm-obfuscator DESTINATION bin)
 install(TARGETS obfuscator_lib DESTINATION lib)
 install(DIRECTORY include/ DESTINATION include)
 

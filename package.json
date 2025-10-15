@@ -10,7 +10,7 @@
   "scripts": {
     "start": "node cli/index.js",
     "test": "node cli/index.js --help",
-    "build": "make -C build llvm-obfuscator",
+    "build": "make -C build phantron-llvm-obfuscator",
     "build:standalone": "bash scripts/build/build-standalone.sh",
     "build:standalone:win": "powershell -ExecutionPolicy Bypass -File scripts/build/build-standalone.ps1",
     "demo": "./demo_auto_tune.sh",

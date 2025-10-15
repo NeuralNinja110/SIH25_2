@@ -27,7 +27,7 @@ All files are located in the `dist/` directory:
 
 | File | Platform | Size | Description |
 |------|----------|------|-------------|
-| `llvm-obfuscator` | Linux | 12.36 MB | Phantron LLVM Obfuscator engine (ELF binary) |
+| `phantron-llvm-obfuscator` | Linux | 12.36 MB | Phantron LLVM Obfuscator engine (ELF binary) |
 
 ### Installation & Configuration
 
@@ -80,7 +80,7 @@ All files are located in the `dist/` directory:
 ```powershell
 # As Administrator
 Copy-Item phantron-win-x64.exe "$env:ProgramFiles\Phantron\phantron.exe"
-Copy-Item llvm-obfuscator "$env:ProgramFiles\Phantron\" -ErrorAction SilentlyContinue
+Copy-Item phantron-llvm-obfuscator "$env:ProgramFiles\Phantron\" -ErrorAction SilentlyContinue
 Copy-Item -Recurse config "$env:ProgramFiles\Phantron\"
 [Environment]::SetEnvironmentVariable("PATH", "$env:PATH;$env:ProgramFiles\Phantron", "Machine")
 ```
@@ -98,7 +98,7 @@ phantron --version
 #### Manual Installation:
 ```bash
 sudo cp phantron-linux-x64 /usr/local/bin/phantron
-sudo cp llvm-obfuscator /usr/local/bin/
+sudo cp phantron-llvm-obfuscator /usr/local/bin/
 sudo chmod +x /usr/local/bin/phantron*
 sudo mkdir -p /usr/local/share/phantron
 sudo cp -r config /usr/local/share/phantron/

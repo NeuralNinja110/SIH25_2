@@ -121,7 +121,7 @@ dist/
 
 Each package contains:
 - `phantron` or `phantron.exe` - Standalone CLI executable
-- `llvm-obfuscator` - Native obfuscation engine
+- `phantron-llvm-obfuscator` - Native obfuscation engine
 - `config/` - Configuration files (balanced, security, size modes)
 - `install.sh` or `install.bat` - Automated installer
 - `README.txt` - Quick start guide
@@ -154,7 +154,7 @@ phantron --version
 #### Linux:
 ```bash
 sudo cp phantron /usr/local/bin/
-sudo cp llvm-obfuscator /usr/local/bin/
+sudo cp phantron-llvm-obfuscator /usr/local/bin/
 sudo chmod +x /usr/local/bin/phantron*
 sudo mkdir -p /usr/local/share/phantron
 sudo cp -r config /usr/local/share/phantron/
@@ -163,7 +163,7 @@ sudo cp -r config /usr/local/share/phantron/
 #### Windows (PowerShell as Administrator):
 ```powershell
 Copy-Item phantron.exe "$env:ProgramFiles\Phantron\"
-Copy-Item llvm-obfuscator.exe "$env:ProgramFiles\Phantron\" -ErrorAction SilentlyContinue
+Copy-Item phantron-llvm-obfuscator.exe "$env:ProgramFiles\Phantron\" -ErrorAction SilentlyContinue
 Copy-Item -Recurse config "$env:ProgramFiles\Phantron\"
 $env:PATH += ";$env:ProgramFiles\Phantron"
 [Environment]::SetEnvironmentVariable("PATH", $env:PATH, "Machine")

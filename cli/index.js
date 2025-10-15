@@ -18,7 +18,7 @@ const { execSync } = require('child_process');
 const yaml = require('js-yaml');
 
 const VERSION = '1.0.0';
-const OBFUSCATOR_BINARY = path.join(__dirname, '..', 'build', 'llvm-obfuscator');
+const OBFUSCATOR_BINARY = path.join(__dirname, '..', 'build', 'phantron-llvm-obfuscator');
 const CONFIG_DIR = path.join(__dirname, '..', 'config');
 const RESULTS_DIR = path.join(__dirname, '..', 'obfuscation_results');
 

@@ -18,7 +18,7 @@ All files are in the **`dist/`** directory:
 | ✅ `phantron-win-arm64.exe` | Windows | ARM64 | 25.83 MB | Surface X, ARM Windows |
 | ✅ `phantron-linux-x64` | Linux | x64 | 44.06 MB | Most Linux servers/desktops |
 | ✅ `phantron-linux-arm64` | Linux | ARM64 | 42.66 MB | Raspberry Pi, AWS Graviton |
-| ✅ `llvm-obfuscator` | Linux | x64 | 12.36 MB | Phantron LLVM Obfuscator engine |
+| ✅ `phantron-llvm-obfuscator` | Linux | x64 | 12.36 MB | Phantron LLVM Obfuscator engine |
 
 ### Installation Tools
 
@@ -198,7 +198,7 @@ gh release create v2.0.5 \
   dist/phantron-win-arm64.exe \
   dist/phantron-linux-x64 \
   dist/phantron-linux-arm64 \
-  dist/llvm-obfuscator \
+  dist/phantron-llvm-obfuscator \
   dist/install.bat \
   dist/install.sh \
   dist/README.txt \

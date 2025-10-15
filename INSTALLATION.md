@@ -280,7 +280,7 @@ phantron interactive
 The binary should be included in the package. Verify:
 
 ```bash
-ls $(npm root -g)/phantron-obfuscator/build/llvm-obfuscator
+ls $(npm root -g)/phantron-obfuscator/build/phantron-llvm-obfuscator
 ```
 
 If missing, reinstall:

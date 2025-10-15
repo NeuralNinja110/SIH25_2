@@ -310,7 +310,7 @@ bool AutoTuner::runObfuscation(const ObfuscationConfig& config,
     
     // Build command
     std::stringstream cmd;
-    cmd << "./build/llvm-obfuscator";
+    cmd << "./build/phantron-llvm-obfuscator";
     cmd << " -i " << inputFile_;
     cmd << " -o " << outputFile;
     cmd << " --cycles " << config.obfuscationCycles;

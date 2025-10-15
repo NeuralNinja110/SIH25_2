@@ -163,8 +163,8 @@ bool CLIParser::parse(int argc, char* argv[]) {
 }
 
 void CLIParser::printHelp() const {
-    std::cout << "LLVM Code Obfuscator v1.0.0\n\n";
-    std::cout << "Usage: llvm-obfuscator [options] <input-file> [output-file]\n\n";
+    std::cout << "Phantron LLVM Code Obfuscator v1.0.0\n\n";
+    std::cout << "Usage: phantron-llvm-obfuscator [options] <input-file> [output-file]\n\n";
     std::cout << "Options:\n";
     std::cout << "  -h, --help                 Show this help message\n";
     std::cout << "  -v, --version              Show version information\n";
@@ -193,20 +193,20 @@ void CLIParser::printHelp() const {
     std::cout << "  --report-format <format>   Report format: json, html, both (default: json)\n";
     std::cout << "\nExamples:\n";
     std::cout << "  # Basic obfuscation\n";
-    std::cout << "  llvm-obfuscator input.c output\n\n";
+    std::cout << "  phantron-llvm-obfuscator input.c output\n\n";
     std::cout << "  # High security with auto-tuning (5 iterations)\n";
-    std::cout << "  llvm-obfuscator --auto-tune --auto-tune-iterations 5 input.c\n\n";
+    std::cout << "  phantron-llvm-obfuscator --auto-tune --auto-tune-iterations 5 input.c\n\n";
     std::cout << "  # Auto-tune for maximum security (10 iterations)\n";
-    std::cout << "  llvm-obfuscator --auto-tune --auto-tune-iterations 10 \\\n";
+    std::cout << "  phantron-llvm-obfuscator --auto-tune --auto-tune-iterations 10 \\\n";
     std::cout << "                  --auto-tune-goal security input.cpp output\n\n";
     std::cout << "  # Manual high-level obfuscation\n";
-    std::cout << "  llvm-obfuscator -l high --cycles 5 input.cpp output\n\n";
+    std::cout << "  phantron-llvm-obfuscator -l high --cycles 5 input.cpp output\n\n";
     std::cout << "  # Load config and auto-tune\n";
-    std::cout << "  llvm-obfuscator -c config.yaml --auto-tune --auto-tune-iterations 8 input.c\n\n";
+    std::cout << "  phantron-llvm-obfuscator -c config.yaml --auto-tune --auto-tune-iterations 8 input.c\n\n";
 }
 
 void CLIParser::printVersion() const {
-    std::cout << "LLVM Code Obfuscator v1.0.0\n";
+    std::cout << "Phantron LLVM Code Obfuscator v1.0.0\n";
     std::cout << "Advanced code obfuscation using LLVM infrastructure\n";
     std::cout << "Copyright (c) 2025\n";
 }
