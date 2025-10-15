@@ -1,14 +1,51 @@
 # Phantron Obfuscator
 
+<div align="center">
+
 [![npm version](https://img.shields.io/npm/v/phantron-obfuscator.svg)](https://www.npmjs.com/package/phantron-obfuscator)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Node.js Version](https://img.shields.io/node/v/phantron-obfuscator.svg)](https://nodejs.org)
+[![Build Status](https://img.shields.io/github/actions/workflow/status/NeuralNinja110/SIH25_2/build.yml)](https://github.com/NeuralNinja110/SIH25_2/actions)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](CONTRIBUTING.md)
 
-Professional code obfuscation CLI tool with LLVM integration, auto-tuning capabilities, and comprehensive reporting.
+**Professional LLVM-based code obfuscation with ML-driven optimization**
+
+[Features](#key-features) •
+[Installation](#installation) •
+[Quick Start](#quick-start) •
+[Documentation](#documentation) •
+[Contributing](CONTRIBUTING.md)
+
+</div>
+
+---
 
 ## Overview
 
 Phantron Obfuscator is a production-ready command-line tool that provides advanced code obfuscation for C and C++ applications. Unlike simple text-based obfuscators, Phantron leverages LLVM compiler infrastructure to perform deep, semantic transformations that significantly increase reverse engineering difficulty while maintaining code functionality.
+
+## Team: ELEVATE_1
+
+<table>
+  <tr>
+    <td align="center"><strong>Rahul Ashok</strong><br/><a href="https://www.linkedin.com/in/rahul19a/">LinkedIn</a></td>
+    <td align="center"><strong>Pritham Devaprasad</strong><br/><a href="https://www.linkedin.com/in/pritham-devaprasad">LinkedIn</a></td>
+    <td align="center"><strong>Anish R</strong><br/><a href="https://www.linkedin.com/in/anish-raghavendr">LinkedIn</a></td>
+  </tr>
+  <tr>
+    <td align="center"><strong>Siddarth S</strong><br/><a href="https://www.linkedin.com/in/siddarth-s-a572b926b/">LinkedIn</a></td>
+    <td align="center"><strong>Sahana Mutharasan</strong></td>
+    <td align="center"><strong>Sanjana Suresh</strong></td>
+  </tr>
+</table>
+
+---
+
+Siddarth S ([LinkedIn](https://www.linkedin.com/in/siddarth-s-a572b926b/))
+
+Sahana Mutharasan
+
+Sanjana Suresh
 
 ## Key Features
 
@@ -270,6 +307,6 @@ Built with LLVM compiler infrastructure and modern Node.js tooling.
 
 ---
 
-**Version**: 2.0.1  
-**Author**: Phantron Team  
+**Version**: 2.0.0+  
+**Team**: ELEVATE_1 
 **Maintainer**: neuralninja110

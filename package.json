@@ -1,6 +1,6 @@
 {
   "name": "phantron-obfuscator",
-  "version": "2.0.4",
+  "version": "2.0.5",
   "description": "Professional code obfuscation CLI with auto-tuning, multi-file support, and comprehensive HTML reporting",
   "main": "cli/index.js",
   "bin": {
@@ -28,9 +28,33 @@
     "binary-protection"
   ],
   "author": {
-    "name": "Phantron Team",
+    "name": "Phantron Team - ELEVATE_1",
     "email": "support@phantron.dev"
   },
+  "contributors": [
+    {
+      "name": "Rahul Ashok",
+      "url": "https://www.linkedin.com/in/rahul19a/"
+    },
+    {
+      "name": "Pritham Devaprasad",
+      "url": "https://www.linkedin.com/in/pritham-devaprasad"
+    },
+    {
+      "name": "Anish R",
+      "url": "https://www.linkedin.com/in/anish-raghavendr"
+    },
+    {
+      "name": "Siddarth S",
+      "url": "https://www.linkedin.com/in/siddarth-s-a572b926b/"
+    },
+    {
+      "name": "Sahana Mutharasan"
+    },
+    {
+      "name": "Sanjana Suresh"
+    }
+  ],
   "license": "MIT",
   "engines": {
     "node": ">=14.0.0"

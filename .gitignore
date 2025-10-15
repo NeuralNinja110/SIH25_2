@@ -51,6 +51,10 @@ tests/results/
 
 # Obfuscation results
 obfuscation_results/
+obfuscated_output/
+scientific_results/
+benchmark_results/
+auto_tune_results/
 *.obfuscated.*
 
 # Reports
@@ -59,17 +63,40 @@ reports/
 !package.json
 !tsconfig.json
 *.html
+!**/docs/**/*.html
 *.log
+
+# Archive
+.archive/
 
 # OS specific
 .DS_Store
+.DS_Store?
+._*
 Thumbs.db
+Desktop.ini
+ehthumbs.db
 
 # Backup files
 *.bak
 *.backup
+*.old
 
 # Temporary files
 *.tmp
 *.temp
 .cache/
+test_output
+test_simple.c
+test_hello.c
+test_utils.c
+
+# Python cache
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+
+# Patches
+*.patch
+*.diff
