@@ -1,0 +1,89 @@
+# MAOS Size-Conservative Mode Configuration
+# Optimization Goal: Maximum security within minimal size footprint
+
+mode: size_conservative
+
+# Constraints
+max_size_increase: 15%        # Maximum binary size increase
+max_time_overhead: 5%          # Maximum runtime overhead
+pass_limit: 50                 # Maximum number of transformation passes
+
+# Genetic Algorithm Parameters
+genetic_algorithm:
+  enabled: true
+  population_size: 25          # Small population for faster convergence
+  generations: 50              # Limited generations
+  tournament_size: 3           # Small tournament for diversity
+  mutation_rate: 0.1           # 10% mutation rate
+  crossover_rate: 0.8          # 80% crossover rate
+  convergence_threshold: 0.001 # Stop if improvement < 0.1%
+  
+# Fitness Weights (total = 1.0)
+fitness_weights:
+  security: 0.4                # 40% weight on security
+  size: 0.4                    # 40% weight on minimizing size
+  performance: 0.2             # 20% weight on performance
+
+# Component Enablement
+components:
+  atie: true                   # Adaptive Transformation Intelligence Engine
+  qirl: true                   # Quantum-Inspired Randomization Layer
+  pcge: true                   # Polymorphic Code Generation Engine
+  genetic_optimization: true   # GA-based optimization
+
+# ATIE Configuration
+atie:
+  ml_model: lightweight        # Use lightweight ML model
+  pass_selection_strategy: selective  # Only critical passes
+  resistance_assessment: basic # Basic resistance testing
+  complexity_threshold: 5      # Only obfuscate functions with complexity > 5
+
+# QIRL Configuration  
+qirl:
+  quantum_inspired: false      # Disable quantum-inspired (too heavy)
+  high_entropy_rng: true       # Use high-quality RNG
+  entangled_control_flow: false # Disable (adds size)
+  opaque_predicates: true      # Enable lightweight opaque predicates
+  entropy_target: 3.0          # Target Shannon entropy
+
+# PCGE Configuration
+pcge:
+  code_morphing: true          # Enable basic morphing
+  self_modification: false     # Disable (adds overhead)
+  metamorphic_templates: true  # Use lightweight templates
+  polymorphic_variants: 2      # Only 2 variants per function
+  runtime_generation: false    # Disable (adds size)
+
+# Transformation Layers
+layers:
+  structural: true             # Control flow obfuscation
+  semantic: true               # Instruction substitution
+  syntactic: true              # Symbol obfuscation
+  quantum_inspired: false      # Disabled in size-conservative mode
+
+# Optimization Strategies
+optimization:
+  compression_enabled: true    # Enable post-obfuscation compression
+  dead_code_elimination: true  # Remove unnecessary code
+  inline_small_functions: true # Inline small functions
+  constant_folding: true       # Fold constants where possible
+
+# Anti-Analysis Features
+anti_analysis:
+  debugger_detection: false    # Disabled (adds code)
+  vm_detection: false          # Disabled
+  timing_checks: false         # Disabled
+  environment_checks: false    # Disabled
+
+# Reporting
+reporting:
+  detailed_metrics: true
+  ga_evolution_chart: true
+  resistance_heatmap: false    # Disabled to save time
+  performance_profile: true
+
+# Logging
+logging:
+  level: INFO                  # INFO level logging
+  verbose: false               # Non-verbose mode
+  log_file: maos_size_conservative.log
